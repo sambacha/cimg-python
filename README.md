@@ -10,12 +10,11 @@
 
 [![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-python.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-python) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-python/master/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/python)](https://hub.docker.com/r/cimg/python) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images)
 
-***This image is designed to supercede the legacy CircleCI Python image, `circleci/python`.***
+**_This image is designed to supercede the legacy CircleCI Python image, `circleci/python`._**
 
 `cimg/python` is a Docker image created by CircleCI with continuous integration builds in mind.
 Each tag contains a complete Python version via pyenv.
 pip, pipenv, and poetry are pre-installed, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
-
 
 ## Table of Contents
 
@@ -25,7 +24,6 @@ pip, pipenv, and poetry are pre-installed, and any binaries and tools that are r
 - [Contributing](#contributing)
 - [Additional Resources](#additional-resources)
 - [License](#license)
-
 
 ## Getting Started
 
@@ -45,7 +43,6 @@ jobs:
 In the above example, the CircleCI Python Docker image is used as the primary container.
 More specifically, the tag `3.8` is used meaning the version of Python will be Python v3.8.
 You can now use Python within the steps for this job.
-
 
 ## How This Image Works
 
@@ -97,7 +94,6 @@ jobs:
           node --version
           java --version
           google-chome --version
-
 ```
 
 ### Tagging Scheme
@@ -115,7 +111,6 @@ For example, the tag `3.8` points to Python v3.8.5 now, but when the next releas
 
 `[-variant]` - Variant tags, if available, can optionally be used.
 For example, the Node.js variant could be used like this: `cimg/python:3.7-node`.
-
 
 ## Development
 
@@ -180,7 +175,6 @@ To build the Docker images locally as this repository does, you'll want to run t
 This would need to be run after generating the Dockerfiles first.
 When releasing proper images for CircleCI, this script is run from a CircleCI pipeline and not locally.
 
-
 ### Submitting a Pull Request
 
 Ensure all the changes to the versioned Dockerfiles and the `build-images.sh` have been reverted, leaving only the `Dockerfile.template` as the modified file. These will have been modified while testing with the sections above.
@@ -227,12 +221,11 @@ git commit -m "Updating submodule for foo."
 This is to aid in "determinism" and prevent breaking customer builds.
 New Python images will automatically pick up the changes.
 
-If you *really* want to publish changes from a parent image into the Python image, you have to build a specific image version as if it was a new image.
+If you _really_ want to publish changes from a parent image into the Python image, you have to build a specific image version as if it was a new image.
 This will create a new Dockerfile and once published, a new image.
 
 **Python specific changes** - Editing the `Dockerfile.template` file in this repo is how to modify the Python image specifically.
 Don't forget that to see any of these changes locally, the `gen-dockerfiles.sh` script will need to be run again (see above).
-
 
 ## Contributing
 
@@ -242,14 +235,12 @@ We encourage [issues](https://github.com/CircleCI-Public/cimg-python/issues) to 
 1. PRs are welcome. If you have a PR that will potentially take a large amount of time to make, it will be better to open an issue to discuss it first to make sure it's something worth investing the time in.
 1. Issues should be to report bugs or request additional/removal of tools in this image. For help with images, please visit [CircleCI Discuss](https://discuss.circleci.com/c/ecosystem/circleci-images).
 
-
 ## Additional Resources
 
 [CircleCI Docs](https://circleci.com/docs/) - The official CircleCI Documentation website.
 [CircleCI Configuration Reference](https://circleci.com/docs/2.0/configuration-reference/#section=configuration) - From CircleCI Docs, the configuration reference page is one of the most useful pages we have.
 It will list all of the keys and values supported in `.circleci/config.yml`.
 [Docker Docs](https://docs.docker.com/) - For simple projects this won't be needed but if you want to dive deeper into learning Docker, this is a great resource.
-
 
 ## License
 
