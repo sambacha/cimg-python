@@ -44,11 +44,6 @@ RUN python --version && \
 # This installs version poetry at the latest version. poetry is updated about twice a month.
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
-RUN sudo apt-get -qq update && \
-    sudo apt-get -qqy install gnupg2 locales && \
-    locale-gen en_US.UTF-8 && \
-    rm -rf /var/lib/apt/lists/*
-
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
@@ -61,7 +56,7 @@ ARG ZULU_REPO_VER=1.0.0-2
 
 RUN sudo apt-get -qq update && \
     sudo apt-get -qq -y --no-install-recommends install gnupg software-properties-common locales curl && \
-    locale-gen en_US.UTF-8 && \
+    sudo locale-gen en_US.UTF-8 && \
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 && \
     curl -sLO https://cdn.azul.com/zulu/bin/zulu-repo_${ZULU_REPO_VER}_all.deb && dpkg -i zulu-repo_${ZULU_REPO_VER}_all.deb && \
     sudo apt-get -qq update && \
@@ -70,6 +65,6 @@ RUN sudo apt-get -qq update && \
     sudo apt-get -qq -y --no-install-recommends install zulu11-jdk=11.0.8-* && \
     sudo apt-get -qq -y purge gnupg software-properties-common curl && \
     sudo apt -y autoremove && \
-    rm -rf /var/lib/apt/lists/* zulu-repo_${ZULU_REPO_VER}_all.deb
+    sudo rm -rf /var/lib/apt/lists/* zulu-repo_${ZULU_REPO_VER}_all.deb
 
 ENV JAVA_HOME=/usr/lib/jvm/zulu11-ca-amd64
